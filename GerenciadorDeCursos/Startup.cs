@@ -1,3 +1,5 @@
+using GerenciadorDeCursos.Interfaces;
+using GerenciadorDeCursos.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +30,7 @@ namespace GerenciadorDeCursos
         {
 
             services.AddControllers();
+            services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GerenciadorDeCursos", Version = "v1" });
