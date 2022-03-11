@@ -9,6 +9,7 @@ namespace GerenciadorDeCursos.Interfaces
     {
         Task<IEnumerable<Course>> GetAllCoursesAsync();
         Task<Course> GetCourseByIdAsync(Guid id);
+        IEnumerable<Course> GetCourseByStatus(string status);
         Task<Course> CreateCourseAsync(Course course);
         Task<bool> DeleteCourseAsync(Course course);
     }

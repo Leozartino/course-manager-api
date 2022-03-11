@@ -1,10 +1,10 @@
 ﻿using GerenciadorDeCursos.Data;
-using GerenciadorDeCursos.Dtos;
 using GerenciadorDeCursos.Interfaces;
 using GerenciadorDeCursos.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Repositories
@@ -37,6 +37,12 @@ namespace GerenciadorDeCursos.Repositories
         {
             var course = await _appDbContext.Courses.FindAsync(id);
             return course;
+        }
+
+        public IEnumerable<Course> GetCourseByStatus(string status)
+        {
+            var courses = _appDbContext.Courses.Where((Course course) => course.Status == status);
+            return courses;
         }
 
         public async Task<bool> DeleteCourseAsync(Course course)
