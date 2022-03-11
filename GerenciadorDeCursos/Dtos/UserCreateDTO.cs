@@ -4,11 +4,11 @@ namespace GerenciadorDeCursos.Dtos
 {
     public class UserCreateDTO
     {
-        [Required(ErrorMessage = "Please, insert user username!")]
+        [Required(ErrorMessage = "Por favor, insira o campo: username!")]
         public string Username { get; set; }
-        [Required(ErrorMessage = "Please, insert user password!")]
+        [Required(ErrorMessage = "Por favor, insira o campo: password!")]
         public string Password { get; set; }
-        [Required(ErrorMessage = "Please, insert user role!")]
+        [Required(ErrorMessage = "Por favor, insira o campo: role!")]
         public string Role { get; set; }
 
     }
