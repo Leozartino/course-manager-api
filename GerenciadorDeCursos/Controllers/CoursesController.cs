@@ -145,8 +145,9 @@ namespace GerenciadorDeCursos.Controllers
             return Created("~api/courses/post", course_response);
         }
 
+        //Gerente e Secretario
         [HttpPut]
-        [Route("update/{id}")]
+        [Route("update/date/{id}")]
         [Authorize(Roles = "Gerente, Secretario")]
         public async Task<ActionResult<CourseResponseDTO>> UpdateCourse(Guid id,[FromBody] CourseUpdateDTO courseUpdate )
         {
@@ -211,7 +212,7 @@ namespace GerenciadorDeCursos.Controllers
             return Ok(course_response);
         }
 
-
+        //Gerente e Secretario
         [HttpPatch]
         [Route("update/title/{id}")]
         [Authorize(Roles = "Gerente, Secretario")]
