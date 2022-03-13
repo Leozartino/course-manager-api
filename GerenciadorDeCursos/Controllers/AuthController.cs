@@ -32,7 +32,7 @@ namespace GerenciadorDeCursos.Controllers
                 return NotFound(new { message = "Usário não encontrado!" });
             }
 
-            if (!(_accountService.VerifyPasswordHash(userLogin.Password, user.Password)))
+            if (!(_accountService.VerifyPassword(userLogin.Password, user.Password)))
             {
                 return BadRequest(new { message = "Username e/ou password estão incorretas!" });
             }

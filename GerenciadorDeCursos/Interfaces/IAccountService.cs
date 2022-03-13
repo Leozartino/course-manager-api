@@ -4,6 +4,6 @@ namespace GerenciadorDeCursos.Interfaces
 {
     public interface IAccountService
     {
-        bool VerifyPasswordHash(string passwordIncoming, string userPassword);
+        bool VerifyPassword(string passwordIncoming, string userPassword);
     }
 }
