@@ -70,7 +70,7 @@ namespace GerenciadorDeCursos.Controllers
 
         //Gerente e Secretario
         [HttpPost]
-        [Route("post")]
+        [Route("create")]
         [Authorize(Roles = "Gerente, Secretario")]
         public async Task<ActionResult<CourseResponseDTO>> CreateCourse(CourseCreateDTO courseDTO)
         {
@@ -106,7 +106,7 @@ namespace GerenciadorDeCursos.Controllers
 
         //Gerente e Secretario
         [HttpPut]
-        [Route("put/status/{id}")]
+        [Route("status/{id}")]
         [Authorize(Roles = "Gerente, Secretario")]
         public async Task<ActionResult<CourseResponseDTO>> UpdateStatusCourse(Guid id, StatusCourseEnum statusCourse)
         {

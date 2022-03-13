@@ -21,7 +21,7 @@ namespace GerenciadorDeCursos.Controllers
         }
 
         [HttpPost]
-        [Route("create-user")]
+        [Route("create")]
         public async Task<ActionResult<User>> CreateUser([FromBody] UserCreateDTO userDto)
         {
 
@@ -43,7 +43,7 @@ namespace GerenciadorDeCursos.Controllers
         }
 
         [HttpGet]
-        [Route("index-one/{id}")]
+        [Route("show/{id}")]
         public async Task<ActionResult<User>> IndexOneUser(Guid id)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
@@ -57,7 +57,7 @@ namespace GerenciadorDeCursos.Controllers
         }
 
         [HttpGet]
-        [Route("index-all")]
+        [Route("index")]
         public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
         {
             return Ok(await _userRepository.GetAllUsersAsync());
@@ -65,7 +65,7 @@ namespace GerenciadorDeCursos.Controllers
 
 
         [HttpPut]
-        [Route("update-user/{id}")]
+        [Route("update/{id}")]
         public async Task<ActionResult<User>> UpdateUser([FromBody] UserUpdateDTO request, Guid id)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
@@ -81,7 +81,7 @@ namespace GerenciadorDeCursos.Controllers
         }
 
         [HttpDelete]
-        [Route("delete-user/{id}")]
+        [Route("delete/{id}")]
         public async Task<ActionResult> DeleteUser(Guid id)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
