@@ -43,7 +43,7 @@ namespace GerenciadorDeCursos.Controllers
 
             if (courses == null)
             {
-                return NotFound(new { message = "curso não pode ser encontrado!" });
+                return NotFound(new { message = "Nenhum curso foi pode ser encontrado!" });
             }
 
             return Ok(courses);
