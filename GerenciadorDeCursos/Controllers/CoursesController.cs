@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeCursos.Dtos;
+using GerenciadorDeCursos.Enums;
 using GerenciadorDeCursos.Interfaces;
 using GerenciadorDeCursos.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -22,6 +23,7 @@ namespace GerenciadorDeCursos.Controllers
 
         }
 
+        //Qualquer pessoa
         [AllowAnonymous]
         [HttpGet]
         [Route("index")]
@@ -31,10 +33,11 @@ namespace GerenciadorDeCursos.Controllers
             return Ok(courses);
         }
 
+        //Qualquer pessoa
         [AllowAnonymous]
         [HttpGet]
         [Route("show/search/{status}")]
-        public ActionResult<Course> ShowCourseByStatus(string status)
+        public ActionResult<Course> ShowCourseByStatus(StatusCourseEnum status)
         {
             var courses = _courseRepository.GetCourseByStatus(status);
 
@@ -47,6 +50,7 @@ namespace GerenciadorDeCursos.Controllers
 
         }
 
+        //Qualquer pessoa
         [AllowAnonymous]
         [HttpGet]
         [Route("show/{id}")]
@@ -63,9 +67,10 @@ namespace GerenciadorDeCursos.Controllers
 
         }
 
-        //Quais usuarios podem criar um curso? Gerente e Secretario
+        //Gerente e Secretario
         [HttpPost]
         [Route("post")]
+        [Authorize(Roles = "Gerente, Secretario")]
         public async Task<ActionResult<Course>> CreateCourse(CourseCreateDTO courseDTO)
         {
 
@@ -87,6 +92,50 @@ namespace GerenciadorDeCursos.Controllers
             return Created("~api/courses/post", course_created);
         }
 
-        //Quais usuarios podem atualizar dados de um curso além do status?
+
+        //Gerente e Secretario
+        [HttpPut]
+        [Route("put/status/{id}")]
+        [Authorize(Roles = "Gerente, Secretario")]
+        public async Task<ActionResult<Course>> UpdateStatusCourse(Guid id, StatusCourseEnum statusCourse)
+        {
+
+            var course = await _courseRepository.GetCourseByIdAsync(id);
+
+            
+            if(course == null)
+            {
+                return NotFound(new { message = "Course não encontrado!" });
+            }
+
+            var course_updated = await _courseRepository.UpdateCourseStatusAsync(course, statusCourse);
+
+
+            return Ok(course_updated);
+        }
+
+        //Gerente
+        [HttpDelete]
+        [Route("delete/{id}")]
+        [Authorize(Roles = "Gerente")]
+        public async Task<ActionResult<Course>> DeleteCourse(Guid id)
+        {
+
+            var course = await _courseRepository.GetCourseByIdAsync(id);
+
+            if (course == null)
+            {
+                return NotFound(new { message = "Curso não encontrado!" });
+            }
+
+            bool result = await _courseRepository.DeleteCourseAsync(course);
+
+            return Ok(new { message = "Curso removido com sucesso!", result });
+        }
+
+        //TODO uodate Course
+
+
+
     }
 }

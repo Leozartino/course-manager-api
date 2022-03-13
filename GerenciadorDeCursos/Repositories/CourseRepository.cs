@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeCursos.Data;
+using GerenciadorDeCursos.Enums;
 using GerenciadorDeCursos.Interfaces;
 using GerenciadorDeCursos.Models;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,16 @@ namespace GerenciadorDeCursos.Repositories
             return course;
         }
 
+        public async Task<Course> UpdateCourseStatusAsync(Course course, StatusCourseEnum statusCourse)
+        {
+            course.Status = statusCourse;
+
+            await _appDbContext.SaveChangesAsync();
+
+            return course;
+        }
+
+
         public async Task<IEnumerable<Course>> GetAllCoursesAsync()
         {
             var courses = await _appDbContext.Courses.ToListAsync();
@@ -39,7 +50,7 @@ namespace GerenciadorDeCursos.Repositories
             return course;
         }
 
-        public IEnumerable<Course> GetCourseByStatus(string status)
+        public IEnumerable<Course> GetCourseByStatus(StatusCourseEnum status)
         {
             var courses = _appDbContext.Courses.Where((Course course) => course.Status == status);
             return courses;

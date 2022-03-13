@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GerenciadorDeCursos.Enums;
+using System;
 
 namespace GerenciadorDeCursos.Dtos
 {
@@ -7,6 +8,6 @@ namespace GerenciadorDeCursos.Dtos
         public string Title { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public string Status { get; set; }
+        public StatusCourseEnum Status { get; set; }
     }
 }
