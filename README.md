@@ -37,6 +37,16 @@ dotnet run
 Acesso o link em: https://localhost:50001/api
 ou http://localhost:5000/api
 
+
+## Requisições e Respostas [User]
+
+| API  | Descrição | Request Body  | Response Body |
+| ------------- | ------------- | ------------- | ------------- |
+| GET /api/users/index-all | Get todos os users | None | Array de users |
+| GET /api/users/show/{id}  | Get um user via Id | None  | Um json do tipo user  |
+| POST /api/users/create-user  | Add um novo user | UserCreateDTO item  | Json do tipo User |
+
+
 ## ✍️ Autor
 
 Feito por mim :)
