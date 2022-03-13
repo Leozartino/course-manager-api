@@ -85,7 +85,7 @@ namespace GerenciadorDeCursos.Controllers
         //Qualquer pessoa
         [AllowAnonymous]
         [HttpGet]
-        [Route("show/search/{status}")]
+        [Route("index/search/{status}")]
         public ActionResult<IEnumerable<CourseResponseDTO>> ShowCourseByStatus([Required] StatusCourseEnum status)
         {
             var courses = _courseRepository.GetCourseByStatus(status);
