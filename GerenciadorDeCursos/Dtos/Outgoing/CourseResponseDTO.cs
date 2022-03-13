@@ -1,5 +1,7 @@
 ﻿using GerenciadorDeCursos.Enums;
+using GerenciadorDeCursos.Models;
 using System;
+using System.Collections.Generic;
 
 namespace GerenciadorDeCursos.Dtos.Outgoing
 {
@@ -11,6 +13,5 @@ namespace GerenciadorDeCursos.Dtos.Outgoing
         public DateTime EndDate { get; set; }
         public int DurationDays { get; set; }
         public StatusCourseEnum Status { get; set; }
-
     }
 }

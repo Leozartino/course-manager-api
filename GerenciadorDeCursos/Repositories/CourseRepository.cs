@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeCursos.Data;
+using GerenciadorDeCursos.Dtos.Outgoing;
 using GerenciadorDeCursos.Enums;
 using GerenciadorDeCursos.Interfaces;
 using GerenciadorDeCursos.Models;
@@ -40,6 +41,7 @@ namespace GerenciadorDeCursos.Repositories
         public async Task<IEnumerable<Course>> GetAllCoursesAsync()
         {
             var courses = await _appDbContext.Courses.ToListAsync();
+
             return courses;
 
         }

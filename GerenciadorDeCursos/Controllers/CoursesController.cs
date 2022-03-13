@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GerenciadorDeCursos.Controllers
@@ -28,17 +29,28 @@ namespace GerenciadorDeCursos.Controllers
         [AllowAnonymous]
         [HttpGet]
         [Route("index")]
-        public async Task<ActionResult<IEnumerable<Course>>> IndexCourses()
+        public async Task<ActionResult<IEnumerable<CourseResponseDTO>>> IndexCourses()
         {
             var courses = await _courseRepository.GetAllCoursesAsync();
-            return Ok(courses);
+
+            var courses_response = courses.Select((Course course) => new CourseResponseDTO
+            {
+                Id = course.Id,
+                Title = course.Title,
+                StartDate = course.StartDate,
+                EndDate = course.EndDate,
+                DurationDays = (course.EndDate - course.StartDate).Days,
+                Status = course.Status
+            });
+
+            return Ok(courses_response);
         }
 
         //Qualquer pessoa
         [AllowAnonymous]
         [HttpGet]
         [Route("show/search/{status}")]
-        public ActionResult<Course> ShowCourseByStatus(StatusCourseEnum status)
+        public ActionResult<IEnumerable<CourseResponseDTO>> ShowCourseByStatus(StatusCourseEnum status)
         {
             var courses = _courseRepository.GetCourseByStatus(status);
 
@@ -47,7 +59,17 @@ namespace GerenciadorDeCursos.Controllers
                 return NotFound(new { message = "Nenhum curso foi pode ser encontrado!" });
             }
 
-            return Ok(courses);
+            var courses_response = courses.Select((Course course) => new CourseResponseDTO
+            {
+                Id = course.Id,
+                Title = course.Title,
+                StartDate = course.StartDate,
+                EndDate = course.EndDate,
+                DurationDays = (course.EndDate - course.StartDate).Days,
+                Status = course.Status
+            });
+
+            return Ok(courses_response);
 
         }
 
@@ -55,16 +77,31 @@ namespace GerenciadorDeCursos.Controllers
         [AllowAnonymous]
         [HttpGet]
         [Route("show/{id}")]
-        public async Task<ActionResult<Course>> ShowCourse(Guid id)
+        public async Task<ActionResult<CourseResponseDTO>> ShowCourse(Guid id)
         {
             var course = await _courseRepository.GetCourseByIdAsync(id);
 
-            if(course == null)
+            if (course == null)
             {
                 return NotFound(new { message = "curso não pode ser encontrado!" });
             }
 
-            return Ok(course);
+
+            int days = (course.EndDate - course.StartDate).Days;
+
+            var course_response = new CourseResponseDTO
+            {
+                Id = course.Id,
+                Title = course.Title,
+                StartDate = course.StartDate,
+                EndDate = course.EndDate,
+                DurationDays = days,
+                Status = course.Status
+            };
+
+
+
+            return Ok(course_response);
 
         }
 
@@ -141,7 +178,7 @@ namespace GerenciadorDeCursos.Controllers
         [HttpDelete]
         [Route("delete/{id}")]
         [Authorize(Roles = "Gerente")]
-        public async Task<ActionResult<Course>> DeleteCourse(Guid id)
+        public async Task<ActionResult<DeleteResponseDTO>> DeleteCourse(Guid id)
         {
 
             var course = await _courseRepository.GetCourseByIdAsync(id);
@@ -153,7 +190,7 @@ namespace GerenciadorDeCursos.Controllers
 
             bool result = await _courseRepository.DeleteCourseAsync(course);
 
-            return Ok(new { message = "Curso removido com sucesso!", result });
+            return Ok(new DeleteResponseDTO { Message = "Curso removido com sucesso!", Result = result});
         }
 
         //TODO update Course

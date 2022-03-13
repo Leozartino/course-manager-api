@@ -1,5 +1,6 @@
 ﻿using GerenciadorDeCursos.Dtos;
 using GerenciadorDeCursos.Dtos.Incoming;
+using GerenciadorDeCursos.Dtos.Outgoing;
 using GerenciadorDeCursos.Interfaces;
 using GerenciadorDeCursos.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -82,7 +83,7 @@ namespace GerenciadorDeCursos.Controllers
 
         [HttpDelete]
         [Route("delete/{id}")]
-        public async Task<ActionResult> DeleteUser(Guid id)
+        public async Task<ActionResult<DeleteResponseDTO>> DeleteUser(Guid id)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
 
@@ -93,7 +94,7 @@ namespace GerenciadorDeCursos.Controllers
 
             bool result = await _userRepository.DeleteUserAsync(user);
 
-            return Ok(new { message = "Usuário removido com sucesso!", result });
+            return Ok(new DeleteResponseDTO { Message = "Usuário removido com sucesso!", Result = result  });
 
 
         }
