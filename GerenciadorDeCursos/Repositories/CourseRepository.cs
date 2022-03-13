@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeCursos.Data;
+using GerenciadorDeCursos.Dtos.Incoming;
 using GerenciadorDeCursos.Dtos.Outgoing;
 using GerenciadorDeCursos.Enums;
 using GerenciadorDeCursos.Interfaces;
@@ -28,9 +29,29 @@ namespace GerenciadorDeCursos.Repositories
             return course;
         }
 
+        public async Task<Course> UpdateCourseAsync(Course course, CourseUpdateDTO courseUpdate)
+        {
+            course.StartDate = courseUpdate.StartDate;
+            course.EndDate = courseUpdate.EndDate;
+
+            await _appDbContext.SaveChangesAsync();
+
+            return course;
+        }
+
+
         public async Task<Course> UpdateCourseStatusAsync(Course course, StatusCourseEnum statusCourse)
         {
             course.Status = statusCourse;
+
+            await _appDbContext.SaveChangesAsync();
+
+            return course;
+        }
+
+        public async Task<Course> UpdateCourseTitleAsync(Course course, string title)
+        {
+            course.Title = title;
 
             await _appDbContext.SaveChangesAsync();
 
@@ -57,6 +78,7 @@ namespace GerenciadorDeCursos.Repositories
             var courses = _appDbContext.Courses.Where((Course course) => course.Status == status);
             return courses;
         }
+
 
         public async Task<bool> DeleteCourseAsync(Course course)
         {
