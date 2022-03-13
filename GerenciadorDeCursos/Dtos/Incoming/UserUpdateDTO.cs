@@ -1,8 +1,13 @@
-﻿namespace GerenciadorDeCursos.Dtos.Incoming
+﻿using GerenciadorDeCursos.Enums;
+using System.ComponentModel.DataAnnotations;
+
+namespace GerenciadorDeCursos.Dtos.Incoming
 {
     public class UserUpdateDTO
-    {
+    {   
+        [Required(ErrorMessage = "Por favor, insira o campo: name!")]        
         public string Name { get; set; }
-        public string Role { get; set; }
+        [Required(ErrorMessage = "Por favor, insira o campo: role!")]
+        public UserRoleEnum Role { get; set; }
     }
 }

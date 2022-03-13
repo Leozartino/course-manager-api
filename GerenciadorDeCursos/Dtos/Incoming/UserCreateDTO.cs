@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GerenciadorDeCursos.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace GerenciadorDeCursos.Dtos
 {
@@ -11,7 +12,7 @@ namespace GerenciadorDeCursos.Dtos
         [Required(ErrorMessage = "Por favor, insira o campo: name!")]
         public string Password { get; set; }
         [Required(ErrorMessage = "Por favor, insira o campo: role!")]
-        public string Role { get; set; }
+        public UserRoleEnum Role { get; set; }
 
     }
 }
