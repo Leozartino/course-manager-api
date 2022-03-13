@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeCursos.Dtos;
+using GerenciadorDeCursos.Dtos.Outgoing;
 using GerenciadorDeCursos.Enums;
 using GerenciadorDeCursos.Interfaces;
 using GerenciadorDeCursos.Models;
@@ -71,7 +72,7 @@ namespace GerenciadorDeCursos.Controllers
         [HttpPost]
         [Route("post")]
         [Authorize(Roles = "Gerente, Secretario")]
-        public async Task<ActionResult<Course>> CreateCourse(CourseCreateDTO courseDTO)
+        public async Task<ActionResult<CourseResponseDTO>> CreateCourse(CourseCreateDTO courseDTO)
         {
 
             Guid id = Guid.NewGuid();
@@ -87,9 +88,19 @@ namespace GerenciadorDeCursos.Controllers
             };
 
             var course_created = await _courseRepository.CreateCourseAsync(course);
-            // var days = (courseDTO.EndDate - courseDTO.StartDate).Days;
+            int days = (courseDTO.EndDate - courseDTO.StartDate).Days;
 
-            return Created("~api/courses/post", course_created);
+            var course_response = new CourseResponseDTO
+            {
+                Id = course_created.Id,
+                Title = course_created.Title,
+                StartDate = course_created.StartDate,
+                EndDate = course_created.EndDate,
+                DurationDays = days,
+                Status = course_created.Status
+            };
+
+            return Created("~api/courses/post", course_response);
         }
 
 
@@ -97,7 +108,7 @@ namespace GerenciadorDeCursos.Controllers
         [HttpPut]
         [Route("put/status/{id}")]
         [Authorize(Roles = "Gerente, Secretario")]
-        public async Task<ActionResult<Course>> UpdateStatusCourse(Guid id, StatusCourseEnum statusCourse)
+        public async Task<ActionResult<CourseResponseDTO>> UpdateStatusCourse(Guid id, StatusCourseEnum statusCourse)
         {
 
             var course = await _courseRepository.GetCourseByIdAsync(id);
@@ -110,8 +121,20 @@ namespace GerenciadorDeCursos.Controllers
 
             var course_updated = await _courseRepository.UpdateCourseStatusAsync(course, statusCourse);
 
+            int days = (course_updated.EndDate - course_updated.StartDate).Days;
 
-            return Ok(course_updated);
+            var course_response = new CourseResponseDTO
+            {
+                Id = course_updated.Id,
+                Title = course_updated.Title,
+                StartDate = course_updated.StartDate,
+                EndDate = course_updated.EndDate,
+                DurationDays = days,
+                Status = course_updated.Status
+            };
+
+
+            return Ok(course_response);
         }
 
         //Gerente
@@ -133,9 +156,8 @@ namespace GerenciadorDeCursos.Controllers
             return Ok(new { message = "Curso removido com sucesso!", result });
         }
 
-        //TODO uodate Course
-
-
+        //TODO update Course
+        //Gerente e Secretario
 
     }
 }
