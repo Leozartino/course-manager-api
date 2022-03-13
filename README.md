@@ -10,7 +10,7 @@
 
 <p align="center">
    <a href="#" target="blank"><img style="border-radius:50px;" src="https://media.discordapp.net/attachments/832452168111489045/952386516762656828/open-book_1.png"           alt="Course Logo"/></a>
-     <a href="#" target="blank"><img style="border-radius:50px;" src="https://media.discordapp.net/attachments/832452168111489045/952707537977901136/professor.png"           alt="Professor Logo"/></a>
+     <a href="#" target="blank"><img style="border-radius:50px;" src="https://media.discordapp.net/attachments/832452168111489045/952709797734662144/teacher_1.png"           alt="Professor Logo"/></a>
 </p>
 
 
