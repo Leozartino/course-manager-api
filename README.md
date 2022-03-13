@@ -43,7 +43,7 @@ ou http://localhost:5000/api
 | API  | Descrição | Request | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
 | GET /api/users/index | Retorna todos os users | None | Array de User |
-| GET /api/users/show/{id}  | Retorna um user via id | None  | Json do tipo User  |
+| GET /api/users/show/{id}  | Retorna um user via id | Guid item  | Json do tipo User  |
 | POST /api/users/create  | Add um novo user | UserCreateDTO item  | Json do tipo User |
 | PUT /api/users/update/{id}  | Atualiza um user via id | UserUpdateDTO item  | Json do tipo User |
 | DELETE /api/users/delete/{id}  | Deleta um user via id | Guid item  | Json do tipo DeleteResponseDTO |
@@ -54,7 +54,7 @@ ou http://localhost:5000/api
 | API  | Descrição | Request | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
 | GET /api/courses/index | Retorna todos os courses | None | Array de CourseResponseDTO |
-| GET /api/courses/show/{id}  | Retorna um course via Id | None  | Json do tipo CourseResponseDTO  |
+| GET /api/courses/show/{id}  | Retorna um course via Id | Guid item  | Json do tipo CourseResponseDTO  |
 | POST /api/courses/create  | Add um novo course | CourseCreateDTO item  | Json do tipo CourseResponseDTO |
 | PUT /api/courses/update/date/{id}  | Atualiza as datas de um course via id | CourseUpdateDTO item | Json do tipo CourseResponseDTO |
 | PATCH /api/courses/update/status/{id}  | Atualiza o status de um course via id| StatusCourseEnum item  | Json do tipo CourseResponseDTO |
