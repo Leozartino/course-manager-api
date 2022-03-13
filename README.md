@@ -40,7 +40,7 @@ ou http://localhost:5000/api
 
 ## ⬆️ Requisições e Respostas ⬇️ [User]
 
-| API  | Descrição | Request Body  | Response Body |
+| API  | Descrição | Request | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
 | GET /api/users/index | Retorna todos os users | None | Array de users |
 | GET /api/users/show/{id}  | Retorna um user via Id | None  | Um json do tipo user  |
@@ -51,7 +51,7 @@ ou http://localhost:5000/api
 
 ## ⬆️ Requisições e Respostas ⬇️ [Course]
 
-| API  | Descrição | Request Body  | Response Body |
+| API  | Descrição | Request | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
 | GET /api/courses/index | Retorna todos os courses | None | Array de courses |
 | GET /api/courses/show/{id}  | Retorna um course via Id | None  | Json do tipo Course  |
