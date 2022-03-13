@@ -38,7 +38,7 @@ Acesso o link em: https://localhost:50001/api
 ou http://localhost:5000/api
 
 
-## Requisições e Respostas [User]
+## ⬆️ Requisições e Respostas ⬇️ [User]
 
 | API  | Descrição | Request Body  | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
@@ -49,7 +49,7 @@ ou http://localhost:5000/api
 | DELETE /api/users/delete/{id}  | Deleta um user | None  | Mensagem de confirmação em json |
 
 
-## Requisições e Respostas [Course]
+## ⬆️ Requisições e Respostas ⬇️ [Course]
 
 | API  | Descrição | Request Body  | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
