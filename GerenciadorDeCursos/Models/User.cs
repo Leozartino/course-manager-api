@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GerenciadorDeCursos.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace GerenciadorDeCursos.Models
@@ -7,9 +8,13 @@ namespace GerenciadorDeCursos.Models
     {
         [Key]
         public Guid Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Username { get; set; }
+        [Required]
         public string Password { get; set; }
-        public string Role { get; set; }
+        [Required]
+        public UserRoleEnum Role { get; set; }
     }
 }
