@@ -49,6 +49,17 @@ ou http://localhost:5000/api
 | DELETE /api/users/delete/{id}  | Deleta um user | None  | Mensagem de confirmação em json |
 
 
+## Requisições e Respostas [Course]
+
+| API  | Descrição | Request Body  | Response Body |
+| ------------- | ------------- | ------------- | ------------- |
+| GET /api/courses/index | Retorna todos os courses | None | Array de courses |
+| GET /api/courses/show/{id}  | Retorna um course via Id | None  | Json do tipo Course  |
+| POST /api/courses/create  | Add um novo course | CourseCreateDTO item  | Json do tipo Course |
+| PUT /api/courses/update/{id}  | Atualiza um course | CourseUpdateDTO item  | Json do tipo Course |
+| DELETE /api/courses/delete/{id}  | Deleta um course | None  | Mensagem de confirmação em json |
+
+
 ## ✍️ Autor
 
 Feito por mim :)
