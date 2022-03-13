@@ -38,7 +38,7 @@ Acesso o link em: https://localhost:50001/api
 ou http://localhost:5000/api
 
 
-## Requisições e Respostas [User]
+## ⬆️ Requisições e Respostas ⬇️ [User]
 
 | API  | Descrição | Request Body  | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
@@ -49,7 +49,7 @@ ou http://localhost:5000/api
 | DELETE /api/users/delete/{id}  | Deleta um user | None  | Mensagem de confirmação em json |
 
 
-## Requisições e Respostas [Course]
+## ⬆️ Requisições e Respostas ⬇️ [Course]
 
 | API  | Descrição | Request Body  | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
@@ -59,6 +59,19 @@ ou http://localhost:5000/api
 | PUT /api/courses/status/{id}  | Atualiza o status de um course via id | StatusCourseEnum item  | Json do tipo CourseResponseDTO |
 | PUT /api/courses/update/{id}  | Atualiza um course | CourseUpdateDTO item  | Json do tipo CourseResponseDTO |
 | DELETE /api/courses/delete/{id}  | Deleta um course | None  | Mensagem de confirmação em json |
+
+
+## Status Code usados no projeto
+
+| StatusCode  | Descrição | 
+| ------------- | ------------- | 
+| 200 🟢| Sucess | 
+| 201 🟢| Created |
+| 400 🟡| Bad Request | 
+| 401 🟡| Unauthorized | 
+| 403 🟡| Forbidden |
+| 404 🟡| Not Found | 
+| 500 🔴| Internal Server Error | 
 
 
 ## ✍️ Autor
