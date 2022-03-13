@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GerenciadorDeCursos.Enums;
+using System;
 
 namespace GerenciadorDeCursos.Models
 {
@@ -8,6 +9,6 @@ namespace GerenciadorDeCursos.Models
         public string Title { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate {get; set; }
-        public string Status { get; set; }
+        public StatusCourseEnum Status { get; set; }
     }
 }

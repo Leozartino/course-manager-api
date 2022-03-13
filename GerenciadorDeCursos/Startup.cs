@@ -1,15 +1,21 @@
 using GerenciadorDeCursos.Data;
 using GerenciadorDeCursos.Interfaces;
+using GerenciadorDeCursos.Models;
 using GerenciadorDeCursos.Repositories;
+using GerenciadorDeCursos.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace GerenciadorDeCursos
 {
@@ -26,8 +32,20 @@ namespace GerenciadorDeCursos
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            // Update JWT config from the settings
+            services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
+
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddControllers().AddJsonOptions(x =>
+            {
+                x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
             services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ITokenService, TokenService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GerenciadorDeCursos", Version = "v1" });
@@ -65,7 +83,30 @@ namespace GerenciadorDeCursos
                 });
             });
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddAuthentication(option =>
+            {
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(jwt =>
+            {   
+                // Getting the secret
+                var key = Encoding.ASCII.GetBytes(Configuration["JwtConfig:Secret"]);
+
+                jwt.SaveToken = true;
+                jwt.TokenValidationParameters = new TokenValidationParameters
+                {   
+                    //Cheking if the jwt genereted is issued by secret key from server
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false, //todo update
+                    ValidateAudience = false, //todo update
+                    RequireExpirationTime = false, //todo update
+                    ValidateLifetime = true
+
+                };
+
+            });
 
         }
 
@@ -83,6 +124,7 @@ namespace GerenciadorDeCursos
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
