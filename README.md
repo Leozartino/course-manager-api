@@ -42,11 +42,11 @@ ou http://localhost:5000/api
 
 | API  | Descrição | Request Body  | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
-| GET /api/users/index-all | Retorna todos os users | None | Array de users |
+| GET /api/users/index | Retorna todos os users | None | Array de users |
 | GET /api/users/show/{id}  | Retorna um user via Id | None  | Um json do tipo user  |
-| POST /api/users/create-user  | Add um novo user | UserCreateDTO item  | Json do tipo User |
-| PUT /api/users/update-user/{id}  | Atualiza um user | UserUpdateDTO item  | Json do tipo User |
-| DELETE /api/users/delete-user/{id}  | Deleta um user | None  | Mensagem de confirmação em json |
+| POST /api/users/create  | Add um novo user | UserCreateDTO item  | Json do tipo User |
+| PUT /api/users/update/{id}  | Atualiza um user | UserUpdateDTO item  | Json do tipo User |
+| DELETE /api/users/delete/{id}  | Deleta um user | None  | Mensagem de confirmação em json |
 
 
 ## ✍️ Autor
