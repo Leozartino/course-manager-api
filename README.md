@@ -61,6 +61,19 @@ ou http://localhost:5000/api
 | DELETE /api/courses/delete/{id}  | Deleta um course | None  | Mensagem de confirmação em json |
 
 
+## Status Code usados no projeto
+
+| StatusCode  | Descrição | 
+| ------------- | ------------- | 
+| 200 🟢| Sucess | 
+| 201 🟢| Created |
+| 400 🟡| Bad Request | 
+| 401 🟡| Unauthorized | 
+| 403 🟡| Forbidden |
+| 404 🟡| Not Found | 
+| 500 🔴| Server Error | 
+
+
 ## ✍️ Autor
 
 Feito por mim :)
