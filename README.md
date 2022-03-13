@@ -56,8 +56,10 @@ ou http://localhost:5000/api
 | GET /api/courses/index | Retorna todos os courses | None | Array de courses |
 | GET /api/courses/show/{id}  | Retorna um course via Id | None  | Json do tipo Course  |
 | POST /api/courses/create  | Add um novo course | CourseCreateDTO item  | Json do tipo CourseResponseDTO |
-| PUT /api/courses/status/{id}  | Atualiza o status de um course via id | StatusCourseEnum item  | Json do tipo CourseResponseDTO |
-| PUT /api/courses/update/{id}  | Atualiza um course | CourseUpdateDTO item  | Json do tipo CourseResponseDTO |
+| PUT /api/courses/update/date/{id}  | Atualiza as datas de um course via id | CourseUpdateDTO item | Json do tipo CourseResponseDTO |
+| PATCH /api/courses/update/status/{id}  | Atualiza o status de um course | StatusCourseEnum item  | Json do tipo CourseResponseDTO |
+| PATCH /api/courses/update/title/{id}  | Atualiza o titulo de um course | string item  | Json do tipo CourseResponseDTO |
+
 | DELETE /api/courses/delete/{id}  | Deleta um course | None  | Mensagem de confirmação em json |
 
 
