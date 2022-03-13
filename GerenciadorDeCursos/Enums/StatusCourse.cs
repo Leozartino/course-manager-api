@@ -2,9 +2,9 @@
 {
     public enum StatusCourseEnum
     {
+        Previsto,
         Em_Andamento,
-        Concluido,
-        Previsto
+        Concluido
     }
 }
 
