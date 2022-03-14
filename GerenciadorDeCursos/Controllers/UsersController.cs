@@ -21,6 +21,28 @@ namespace GerenciadorDeCursos.Controllers
             _userRepository = userRepository;
         }
 
+        [HttpGet]
+        [Route("index")]
+        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
+        {
+            return Ok(await _userRepository.GetAllUsersAsync());
+        }
+
+        [HttpGet]
+        [Route("show/{id}")]
+        public async Task<ActionResult<User>> IndexOneUser(Guid id)
+        {
+            var user = await _userRepository.GetUserByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound(new { message = "Usuário não encontrado!" });
+            }
+
+            return Ok(user);
+        }
+
+
         [HttpPost]
         [Route("create")]
         public async Task<ActionResult<User>> CreateUser([FromBody] UserCreateDTO userDto)
@@ -42,28 +64,6 @@ namespace GerenciadorDeCursos.Controllers
 
             return Created("~api/users/create-user", user_created);
         }
-
-        [HttpGet]
-        [Route("show/{id}")]
-        public async Task<ActionResult<User>> IndexOneUser(Guid id)
-        {
-            var user = await _userRepository.GetUserByIdAsync(id);
-
-            if (user == null)
-            {
-                return NotFound(new { message = "Usuário não encontrado!" });
-            }
-
-            return Ok(user);
-        }
-
-        [HttpGet]
-        [Route("index")]
-        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
-        {
-            return Ok(await _userRepository.GetAllUsersAsync());
-        }
-
 
         [HttpPut]
         [Route("update/{id}")]
