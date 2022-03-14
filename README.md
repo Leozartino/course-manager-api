@@ -63,6 +63,12 @@ ou http://localhost:5000/api
 | DELETE /api/courses/delete/{id}  | Deleta um course via id | Guid item  | Json do tipo DeleteResponseDTO |
 
 
+## Diagrama de Tabelas
+
+<div align="center">
+     <a href="#" target="blank"><img style="border-radius:50px;" src="https://media.discordapp.net/attachments/832452168111489045/952752177867288656/diagramas.PNG"           alt="Diagrama"/></a>
+</div>
+
 ## Status Code usados no projeto
 
 | StatusCode  | Descrição | 
