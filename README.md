@@ -1,4 +1,4 @@
-# Gerenciador de Cursos REST API ASP .NET Core 5
+# Course Manager REST API ASP .NET Core 5
 
 <div align="center">
 
@@ -15,33 +15,35 @@
 
 
 
-## 💻 Pré-requisitos
+## 💻 Prerequisites
+Before you begin, make sure you meet the following requirements:
 
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
-* Você instalou a versão do ASP .NET Core 5.0 [SDK 5.0.405](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
-* Você tem uma máquina `<Windows / Linux / Mac>`. O projeto foi desenvolvido no Windows 10
-* Você possui instalado o [SQLServer Express 2016](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver15)
-* Opcional [SQLServer Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
-* Opcional [Postman](https://www.postman.com/downloads/)
+* You have installed the ASP .NET Core 5.0 [SDK 5.0.405](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
+* You have a <Windows / Linux / Mac> machine. The project was developed on Windows 10
+* You have installed [SQLServer Express 2016](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver15)
+* Optional [SQLServer Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
+* Optional [Postman](https://www.postman.com/downloads/)
 
-## 🚀 Rodando o projeto Gerenciador_de_cursos
+## 🚀 Running the Course Manager project
 
-Dentro da pasta do projeto Gerenciador_de_cursos, siga estas etapas:
+Inside the Gerenciador_de_cursos project folder, follow these steps:
 
 CLI (Windows / Linux):
+
 ```bash
 dotnet restore
 dotnet build
 dotnet run
 ```
 
-Acesso o link em: https://localhost:50001/api
-ou http://localhost:5000/api
+Access the link at: https://localhost:50001/api or http://localhost:5000/api
+
+⬆️ Requests and Responses ⬇️ [User]
 
 
 ## ⬆️ Requisições e Respostas ⬇️ [User]
 
-| API  | Descrição | Request | Response Body |
+| API	| Description	| Request |	Response Body |
 | ------------- | ------------- | ------------- | ------------- |
 | GET /api/users/index | Retorna todos os users | None | Array de User |
 | GET /api/users/show/{id}  | Retorna um user via id | Guid item  | Json do tipo User  |
@@ -52,7 +54,7 @@ ou http://localhost:5000/api
 
 ## ⬆️ Requisições e Respostas ⬇️ [Course]
 
-| API  | Descrição | Request | Response Body |
+| API  | Description | Request | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
 | GET /api/courses/index | Retorna todos os courses | None | Array de CourseResponseDTO |
 | GET /api/courses/show/{id}  | Retorna um course via Id | Guid item  | Json do tipo CourseResponseDTO  |
@@ -63,15 +65,15 @@ ou http://localhost:5000/api
 | DELETE /api/courses/delete/{id}  | Deleta um course via id | Guid item  | Json do tipo DeleteResponseDTO |
 
 
-## Diagrama de Tabelas
+## Tables Diagram
 
 <div align="center">
      <a href="#" target="blank"><img style="border-radius:50px;" src="https://media.discordapp.net/attachments/832452168111489045/952752177867288656/diagramas.PNG"           alt="Diagrama"/></a>
 </div>
 
-## Status Code usados no projeto
+## Status Codes used in the project
 
-| StatusCode  | Descrição | 
+| StatusCode  | Description | 
 | ------------- | ------------- | 
 | 200 🟢| Sucess | 
 | 201 🟢| Created |
@@ -82,9 +84,9 @@ ou http://localhost:5000/api
 | 500 🔴| Internal Server Error | 
 
 
-## ✍️ Autor
+## ✍️ Author
 
-Feito por mim :)
+Made by me, with love ❤️ :)
 
 <table>
     <td align="center">
@@ -97,6 +99,6 @@ Feito por mim :)
     <td align="center">
 </table>
 
-## 📝 Licença
+## 📝 License
 
-Esse projeto está sob licença. Veja o arquivo [MIT](https://choosealicense.com/licenses/mit/) para mais detalhes.
+This project is under a license. See the MIT file for more details. [MIT](https://choosealicense.com/licenses/mit/) para mais detalhes.
