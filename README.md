@@ -38,10 +38,7 @@ dotnet run
 
 Access the link at: https://localhost:50001/api or http://localhost:5000/api
 
-⬆️ Requests and Responses ⬇️ [User]
-
-
-## ⬆️ Requisições e Respostas ⬇️ [User]
+## ⬆️ Requests and Responses ⬇️ [User]
 
 | API	| Description	| Request |	Response Body |
 | ------------- | ------------- | ------------- | ------------- |
@@ -52,7 +49,7 @@ Access the link at: https://localhost:50001/api or http://localhost:5000/api
 | DELETE /api/users/delete/{id}  | Deleta um user via id | Guid item  | Json do tipo DeleteResponseDTO |
 
 
-## ⬆️ Requisições e Respostas ⬇️ [Course]
+## ⬆️ Requests and Responses ⬇️ [Course]
 
 | API  | Description | Request | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
