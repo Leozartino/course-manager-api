@@ -40,26 +40,25 @@ Access the link at: https://localhost:50001/api or http://localhost:5000/api
 
 ## ⬆️ Requests and Responses ⬇️ [User]
 
-| API	| Description	| Request |	Response Body |
+| API  | Description | Request | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
-| GET /api/users/index | Retorna todos os users | None | Array de User |
-| GET /api/users/show/{id}  | Retorna um user via id | Guid item  | Json do tipo User  |
-| POST /api/users/create  | Add um novo user | UserCreateDTO item  | Json do tipo User |
-| PUT /api/users/update/{id}  | Atualiza um user via id | UserUpdateDTO item  | Json do tipo User |
-| DELETE /api/users/delete/{id}  | Deleta um user via id | Guid item  | Json do tipo DeleteResponseDTO |
-
+| GET /api/users/index | Returns all users | None | Array of User |
+| GET /api/users/show/{id}  | Returns a user via id | Guid item  | JSON of type User  |
+| POST /api/users/create  | Adds a new user | UserCreateDTO item  | JSON of type User |
+| PUT /api/users/update/{id}  | Updates a user via id | UserUpdateDTO item  | JSON of type User |
+| DELETE /api/users/delete/{id}  | Deletes a user via id | Guid item  | JSON of type DeleteResponseDTO |
 
 ## ⬆️ Requests and Responses ⬇️ [Course]
 
 | API  | Description | Request | Response Body |
 | ------------- | ------------- | ------------- | ------------- |
-| GET /api/courses/index | Retorna todos os courses | None | Array de CourseResponseDTO |
-| GET /api/courses/show/{id}  | Retorna um course via Id | Guid item  | Json do tipo CourseResponseDTO  |
-| POST /api/courses/create  | Add um novo course | CourseCreateDTO item  | Json do tipo CourseResponseDTO |
-| PUT /api/courses/update/date/{id}  | Atualiza as datas de um course via id | CourseUpdateDTO item | Json do tipo CourseResponseDTO |
-| PATCH /api/courses/update/status/{id}  | Atualiza o status de um course via id| StatusCourseEnum item  | Json do tipo CourseResponseDTO |
-| PATCH /api/courses/update/title/{id}  | Atualiza o titulo de um course via id | Guid item  | Json do tipo CourseResponseDTO |
-| DELETE /api/courses/delete/{id}  | Deleta um course via id | Guid item  | Json do tipo DeleteResponseDTO |
+| GET /api/courses/index | Returns all courses | None | Array of CourseResponseDTO |
+| GET /api/courses/show/{id}  | Returns a course via Id | Guid item  | JSON of type CourseResponseDTO  |
+| POST /api/courses/create  | Adds a new course | CourseCreateDTO item  | JSON of type CourseResponseDTO |
+| PUT /api/courses/update/date/{id}  | Updates the dates of a course via id | CourseUpdateDTO item | JSON of type CourseResponseDTO |
+| PATCH /api/courses/update/status/{id}  | Updates the status of a course via id | StatusCourseEnum item  | JSON of type CourseResponseDTO |
+| PATCH /api/courses/update/title/{id}  | Updates the title of a course via id | Guid item  | JSON of type CourseResponseDTO |
+| DELETE /api/courses/delete/{id}  | Deletes a course via id | Guid item  | JSON of type DeleteResponseDTO |
 
 
 ## Tables Diagram
