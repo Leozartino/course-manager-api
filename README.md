@@ -97,4 +97,4 @@ Made by me, with love ❤️ :)
 
 ## 📝 License
 
-This project is under a license. See the MIT file for more details. [MIT](https://choosealicense.com/licenses/mit/) para mais detalhes.
+This project is under a license. See the MIT file for more details. [MIT](https://choosealicense.com/licenses/mit/)
